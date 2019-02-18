@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게시판 수정</title>
+<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+	<h1>수정 폼</h1>
+	<form action="/boardUpdate" method="post">
+		<table id="customers">
+			<tr>
+				<td>boardNo :<input type="text" name="boardNo" th:value="${board.boardNo}"readonly></td>
+			</tr>
+			<tr>
+				<td>boardTitle :<input type="text" name="boardTitle" th:value="${board.boardTitle}"></td>
+			</tr>
+			<tr>
+				<td>boardContent :<input type="text" name="boardContent"th:value="${board.boardContent}"></td>
+			</tr>
+			<tr>
+				<td>boardUser :<input type="text" name="boardUser" th:value="${board.boardUser}"></td>
+			</tr>
+			<tr>
+			<td><input type="submit" value="수정 완료"></td>
+			</tr>
+		</table>
+	</form>
+	<a th:href="@{/boardList}" ><button>글목록보기</button></a>
+</body>
+</html>

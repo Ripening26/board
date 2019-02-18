@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게시판 상세보기</title>
+<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+	<h1>상세보기</h1>
+	<form action="/boardTitleView" method="post">
+		<table id="customers">
+			<tr>
+				<td>boardNo :<input type="text" name="boardNo" th:value="${board.boardNo}"readonly></td>
+			</tr>
+			<tr>
+				<td>boardTitle :<input type="text" name="boardTitle" th:value="${board.boardTitle}"readonly></td>
+			</tr>
+			<tr>
+				<td>boardContent :<textarea  name="boardContent" rows="10"  th:text="${board.boardContent}" class="form-control form-control"></textarea></td>
+			</tr>
+			<tr>
+				<td>boardUser :<input type="text" name="boardUser" th:value="${board.boardUser}"readonly></td>
+			</tr>
+		</table>
+	</form>
+		<a th:href="@{/boardUpdate(boardNo=${board.boardNo})}"><button>수정</button></a>
+		<a th:href="@{/boardDelete(boardNo=${board.boardNo})}"><button>삭제</button></a>
+	<table>
+		<tr>
+			<td><a th:href="@{/boardList}" ><button>글목록보기</button></a></td>
+		</tr>	
+	</table>
+</body>
+</html>

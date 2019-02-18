@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>게시판 전체 목록</title>
+<style>
+#customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}
+</style>
+</head>
+<body>
+	<h1>게시판 전체 목록</h1>
+	<table id="customers">
+		<tr>
+			<td>boardNo</td>
+			<td>boardTitle</td>
+			<td>boardUser</td>
+			<td>boardDate</td>
+		</tr>
+		<tr th:each="m : ${returnMap.get('list')}">
+			<td th:text="${m.boardNo}"></td>
+			<!-- <td th:text="${m.boardTitle}"></td> -->
+			<td><a th:href="@{/boardTitleView(boardNo=${m.boardNo})}" th:text="${m.boardTitle}"></a></td>
+			<td th:text="${m.boardUser}"></td>
+			<td th:text="${m.boardDate}"></td>
+		</tr>
+	</table>
+
+	
+	
+	<a th:href="@{/boardList(currentPage=0)}" ><button th:text="처음으로"></button></a> 
+ 	<a th:if="${currentPage > 0}" th:href="@{/boardList(currentPage=${currentPage-1})}" ><button th:text="이전"></button></a> 
+  	<a th:if="${returnMap.lastpage > currentPage}" th:href="@{/boardList(currentPage=${currentPage+1})}" ><button th:text="다음"></button></a> 
+ 	<a th:href="@{/boardList(currentPage=${returnMap.lastpage})}" ><button th:text="끝으로"></button></a><br/>  	
+  	<a th:href="@{/boardAdd}" ><button th:text="글등록하기"></button></a>      
+</body>
+</html>

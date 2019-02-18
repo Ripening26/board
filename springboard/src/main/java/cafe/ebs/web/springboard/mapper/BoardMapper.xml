@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><!--DTD 형식  -->
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cafe.ebs.web.springboard.mapper.BoardMapper">
+	<!-- 컬럼명일치시켜준다  as []-->
+	
+	
+	<!-- 글 하나의 수정 및 상세보기 쿼리 -->
+	<select id="selectBoard"
+			parameterType="int"
+			resultType="cafe.ebs.web.springboard.vo.Board">
+			SELECT
+				board_no as boardNo,
+			 	board_title as boardTitle,
+			 	board_content as boardContent,
+			   	board_user as boardUser,
+			   	board_date as boardDate
+			FROM board
+		   	WHERE board_no=#{boardNo}
+	</select>
+	
+	<!-- 전체 리스트 및 페이징 쿼리-->
+	<select id="selectgetBoardList"
+			parameterType="java.util.Map"
+			resultType="cafe.ebs.web.springboard.vo.Board">
+			SELECT  
+ 				board_no as boardNo,  
+ 				board_title as boardTitle,  
+ 				board_user as boardUser,  
+ 				board_date as boardDate 
+ 			FROM board  
+ 			ORDER BY board_no ASC  
+ 			LIMIT #{currentPage}, #{rowPerPage} 
+
+	</select>
+	
+	
+	<!-- 전체 페이지 글의 갯수 쿼리-->
+	<select id="selectBoardCount"
+			resultType="int">
+			SELECT 
+			COUNT(*) 
+			FROM board
+	</select>
+	
+	<!-- 글내용 추가  쿼리-->
+	<insert id="insertBoard"
+			parameterType="cafe.ebs.web.springboard.vo.Board">
+			INSERT INTO board(
+				board_pw,
+				board_title,
+				board_content,
+				board_user,
+				board_date
+			)VALUES(
+				#{boardPw},
+				#{boardTitle},
+				#{boardContent},
+				#{boardUser},
+				now()
+				
+			)
+	</insert>
+	
+	<!-- 글 내용 수정  쿼리-->
+	<update id="updateBoard"
+			parameterType="cafe.ebs.web.springboard.vo.Board">
+			UPDATE board
+			SET
+				board_no=#{boardNo},
+				board_title=#{boardTitle},
+				board_content=#{boardContent},
+				board_user=#{boardUser}
+			WHERE board_no=#{boardNo}
+	</update>
+	
+	
+	<!-- 글 내용 삭제 쿼리 -->
+	<delete id="deleteBoard"
+			parameterType="cafe.ebs.web.springboard.vo.Board">
+			DELETE FROM board
+			WHERE board_no=#{boardNo}
+			and board_pw=#{boardPw}
+	</delete>
+	
+</mapper>
