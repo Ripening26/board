@@ -47,7 +47,7 @@
 	</table>
 
 	
-	
+	<!--페이징  -->
 	<a th:href="@{/boardList(currentPage=0)}" ><button th:text="처음으로"></button></a> 
  	<a th:if="${currentPage > 0}" th:href="@{/boardList(currentPage=${currentPage-1})}" ><button th:text="이전"></button></a> 
   	<a th:if="${returnMap.lastpage > currentPage}" th:href="@{/boardList(currentPage=${currentPage+1})}" ><button th:text="다음"></button></a> 

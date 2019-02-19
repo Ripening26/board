@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 상세보기</title>
+
 <style>
 #customers {
   font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -39,7 +40,7 @@
 				<td>boardTitle :<input type="text" name="boardTitle" th:value="${board.boardTitle}"readonly></td>
 			</tr>
 			<tr>
-				<td>boardContent :<textarea  name="boardContent" rows="10"  th:text="${board.boardContent}" class="form-control form-control"></textarea></td>
+				<td>boardContent :<textarea  name="boardContent" cols="50" rows="10"  th:text="${board.boardContent}" class="form-control form-control" readonly></textarea></td>
 			</tr>
 			<tr>
 				<td>boardUser :<input type="text" name="boardUser" th:value="${board.boardUser}"readonly></td>

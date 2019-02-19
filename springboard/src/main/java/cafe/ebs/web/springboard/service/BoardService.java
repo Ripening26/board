@@ -24,10 +24,12 @@ public class BoardService {
 
 	//페이징 작업
 	
-	  public Map<String, Object> selectgetBoardList(int currentPage){ //1 첫번째 final
+	  public Map<String, Object> selectgetBoardList(int currentPage){ 
+		//1 첫번째 final
 	  int ROW_PER_PAGE = 10; Map<String, Integer> map = new HashMap<String,
 	  Integer>(); map.put("currentPage", currentPage*ROW_PER_PAGE);
-	  map.put("rowPerPage", ROW_PER_PAGE); //2번째
+	  map.put("rowPerPage", ROW_PER_PAGE); 
+	  //2번째
 	  int boardCount = boardMapper.selectBoardCount(); 
 	  int lastpage = (int)(Math.ceil(boardCount/ROW_PER_PAGE));
 	  

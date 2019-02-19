@@ -39,10 +39,13 @@
 				<td>boardTitle :<input type="text" name="boardTitle" th:value="${board.boardTitle}"></td>
 			</tr>
 			<tr>
-				<td>boardContent :<input type="text" name="boardContent"th:value="${board.boardContent}"></td>
+				<td>boardContent :<textarea  name="boardContent" rows="10"  th:text="${board.boardContent}" class="form-control form-control" ></textarea></td>
 			</tr>
 			<tr>
 				<td>boardUser :<input type="text" name="boardUser" th:value="${board.boardUser}"></td>
+			</tr>
+			<tr>
+				<td>boardPassword :<input type="text" name="boardPw"></td>
 			</tr>
 			<tr>
 			<td><input type="submit" value="수정 완료"></td>

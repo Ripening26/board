@@ -19,7 +19,7 @@ public class BoardController {
 	 // 리스트 요청
     @GetMapping("/boardList")
     public String boardList(Model model, 
-                    @RequestParam(value="currentPage", required=false, defaultValue="1") int currentPage) {
+                    @RequestParam(value="currentPage", required=false, defaultValue="0") int currentPage) {
     	Map<String, Object> returnMap = boardService.selectgetBoardList(currentPage);
 		/* returnMap.put("currentPage", currentPage); */ 
     	model.addAttribute("returnMap", returnMap);

@@ -3,52 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 입력</title>
+<!-- j query를 사용하기 위한 작성 --> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> 
+
 <style>
 #customers {
-  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	border-collapse: collapse;
+	width: 100%;
 }
 
 #customers td, #customers th {
-  border: 1px solid #ddd;
-  padding: 8px;
+	border: 1px solid #ddd;
+	padding: 8px;
 }
 
-#customers tr:nth-child(even){background-color: #f2f2f2;}
+#customers tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
 
-#customers tr:hover {background-color: #ddd;}
+#customers tr:hover {
+	background-color: #ddd;
+}
 
 #customers th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #4CAF50;
-  color: white;
+	padding-top: 12px;
+	padding-bottom: 12px;
+	text-align: left;
+	background-color: #4CAF50;
+	color: white;
 }
 </style>
+<script>
+	// 유효성 검사
+	$(document).ready(function(){
+		$('#submitAdd').click(function(){
+			if($('#boardTitle').val().length<1){
+				$('#boardTitle').attr('placeholder','제목을 입력하세요');
+				$('#boardTitle').focus();
+				return false;
+			}else if($('#boardUser').val().length<1){
+				$('#boardUser').attr('placeholder','저자를 입력하세요');
+				$('#boardUser').focus();
+				return false;
+			}else if($('#boardContent').val().length<1){
+				$('#boardContent').attr('placeholder','내용을 입력하세요');
+				$('#boardContent').focus();
+				return false;
+			}else if($('#boardPw').val().length<1){
+				$('#boardPw').attr('placeholder','비밀번호를 입력하세요');
+				$('#boardPw').focus();
+				return false;
+			}
+		});
+	});
+	
+</script>
 </head>
 <body>
-	<h1>글 추가 폼</h1>
-	<form action="/boardAdd" method="POST">
-		<table id="customers" >
-			<tr>
-				<td>비밀번호 : <input type="text" name="boardPw"></td>
-			</tr>
-			<tr>	
-				<td>제목 :<input type="text" name="boardTitle"></td>
-			</tr>
-			<tr>
-				<td>내용 :<input type="text" name="boardContent"></td>
-			</tr>
-			<tr>
-				<td>글쓴이:<input type="text" name="boardUser"></td>
-			</tr>	
-			<tr>
-				<td><input type="submit" value="입력"></td>
-			</tr>
-		</table>
-	</form>
-	<a th:href="@{/boardList}" ><button>돌아가기</button></a>
+	<div class="container form-group">
+		<h1>게시판 글 입력</h1>
+		<form action="/boardAdd" id="boardAddForm" method="post">
+			<table id="customers">
+				<tr>
+					<td>
+						<label class="control-label">제목 :</label>
+						<input type="text" name="boardTitle" id="boardTitle" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label class="control-label">글쓴이: </label>
+						<input type="text" name="boardUser" id="boardUser" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label class="control-label">내용 : </label>
+						<textarea  name="boardContent" cols="50" rows="10" id="boardContent" class="form-control"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<label class="control-label">비밀번호 :</label>
+						<input type="text" name="boardPw" id="boardPw" class="form-control">
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="submit" id="submitAdd" value="입력">
+					</td>
+				</tr>
+			</table>
+		</form>
+		<a th:href="@{/boardList}"><button>돌아가기</button></a>
+	</div>
 </body>
 </html>
