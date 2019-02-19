@@ -3,9 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>게시판 삭제</title>
-
-
-	
 <style>
 #customers {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
@@ -42,14 +39,10 @@
 		<form action="/boardDelete" id="boardDelete" method="post">
 			<table id="customers">
 				<tr>
-					<td>boardNo :<input type="text" name="boardNo"
-						th:value="${board.boardNo}" readonly></td>
+					<td>boardNo :<input type="text" name="boardNo" th:value="${board.boardNo}" readonly></td>
 				</tr>
 				<tr>
-					<td>
-					<label class="control-label">boardPassword :</label>
-					<input type="text" name="boardPw" ">
-					</td>
+					<td>boardPassword : <input type="text" name="boardPw"></td>
 				</tr>
 				<tr>
 					<td><input type="submit"  value="삭제" ></td>
