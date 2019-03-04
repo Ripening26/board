@@ -38,7 +38,7 @@
 	// 유효성 검사
 	$(document).ready(function(){
 		$('#submitAdd').click(function(){
-			if($('#boardTitle').val().length<1){
+			if($('#boardTitle').val().length<1){ /*#boardTitle tag가져오는것  */
 				$('#boardTitle').attr('placeholder','제목을 입력하세요');
 				$('#boardTitle').focus();
 				return false;
@@ -91,10 +91,16 @@
 				</tr>
 				<tr>
 					<td>
+						<input type="file" name="file">
+					</td>
+				</tr>
+				<tr>
+					<td>
 						<input type="submit" id="submitAdd" value="입력">
 					</td>
 				</tr>
 			</table>
+			
 		</form>
 		<a th:href="@{/boardList}"><button>돌아가기</button></a>
 	</div>

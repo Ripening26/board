@@ -1,5 +1,9 @@
 package cafe.ebs.web.springboard.vo;
 
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
+
 public class Board {
 	private int boardNo;
 	private String boardPw;
@@ -7,6 +11,7 @@ public class Board {
 	private String boardContent;
 	private String boardUser;
 	private String boardDate;
+	private List<MultipartFile> fileList;
 
 	public int getBoardNo() {
 		return boardNo;
@@ -55,10 +60,22 @@ public class Board {
 	public void setBoardDate(String boardDate) {
 		this.boardDate = boardDate;
 	}
+	
+	
+
+	public List<MultipartFile> getFileList() {
+		return fileList;
+	}
+
+	public void setFileList(List<MultipartFile> fileList) {
+		this.fileList = fileList;
+	}
 
 	@Override
 	public String toString() {
 		return "Board [boardNo=" + boardNo + ", boardPw=" + boardPw + ", boardTitle=" + boardTitle + ", boardContent="
-				+ boardContent + ", boardUser=" + boardUser + ", boardDate=" + boardDate + "]";
+				+ boardContent + ", boardUser=" + boardUser + ", boardDate=" + boardDate + ", fileList=" + fileList
+				+ "]";
 	}
+	
 }
